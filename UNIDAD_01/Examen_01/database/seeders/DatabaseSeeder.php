@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Game;
 use App\Models\Place;
 use App\Models\Tournament;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,8 +25,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        //$this->call(Place::class);
-        Place::factory(20)->create();
+        //$this->call(UserSeeder::class);
+        $this->call(PlaceSeeder::class);
+        //Place::factory(20)->create();
         Tournament::factory(20)->create();
         Game::factory(20)->create();
     }
