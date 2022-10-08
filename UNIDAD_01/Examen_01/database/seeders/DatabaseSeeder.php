@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         //$this->call(Place::class);
-        Place::factory(10)->create();
-        Tournament::factory(10)->create();
-        Game::factory(100)->create();
+        Place::factory(20)->create();
+        Tournament::factory(20)->create();
+        Game::factory(20)->create();
     }
 }
