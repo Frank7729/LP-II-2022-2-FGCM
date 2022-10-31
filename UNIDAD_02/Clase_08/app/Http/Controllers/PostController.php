@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        $posts=Post::where('status', 2)->latest('id')->paginate(8);
+        $posts=Post::latest('id')->paginate(8);
         return view('posts.index', compact('posts'));
     }
 
     public function category(Category $category){
         //dd('buscar post cat'.$category);
-        $posts=Post::where('status', 2)->where('category_id', $category->id)->latest('id')->paginate(8);
+        $posts=Post::where('status', 2)->where('category_id', $category->id)->latest('id')->paginate(16);
         return view('posts.index', compact('posts'));
     }
 

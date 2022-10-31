@@ -100,9 +100,6 @@
                             <a href="#"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-700 hover:text-white hover:text-lg"
                                 role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-700 hover:text-white hover:text-lg"
-                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
 

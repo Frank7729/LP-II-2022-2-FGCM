@@ -32,7 +32,9 @@
                         </ul>
                     </aside>
                 </div>
+
             </section>
+
           </main>
     </div>
 </x-app-layout>
