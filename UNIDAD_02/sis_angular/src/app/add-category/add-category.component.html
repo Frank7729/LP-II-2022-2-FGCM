@@ -1,6 +1,7 @@
-<h2 class="text-center text-2xl text-slate-600 font-bold">Nueva Categoría</h2>
-<div class="w-full max-w-xs m-auto">
+<div class="w-full max-w-xs m-auto p-2">
+  <h2 class="rounded text-center text-2xl text-slate-600 font-bold bg-orange-400">Nueva Categoría</h2>
   <form #categoryForm="ngForm" (ngSubmit)="submitForm(categoryForm)" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <input type="text" name="id" [(ngModel)]="categoryService.selectCategory.id">
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
         Name

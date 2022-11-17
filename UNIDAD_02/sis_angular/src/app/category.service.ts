@@ -8,6 +8,7 @@ import { Category } from './category';
 })
 export class CategoryService {
 
+  url='http://127.0.0.1:8000/api/categories';
   selectCategory:Category=new Category();
   reqHeader=new HttpHeaders({
     'Content-Type':'aplication/json'
@@ -15,10 +16,18 @@ export class CategoryService {
 
   constructor(private http:HttpClient) { }
   getCategories():Observable<Category>{
-    return this.http.get<Category>('http://127.0.0.1:8000/api/categories');
+    return this.http.get<Category>(this.url);
   }
 
   createCategory(category:Category):Observable<Category>{
-    return this.http.post('http://127.0.0.1:8000/api/categories', category, {headers:this.reqHeader});
+    return this.http.post(this.url, category, {headers:this.reqHeader});
+  }
+
+  updateCategory(id:number, category:Category){
+    return this.http.put(this.url+'/'+id+'/', category, {headers:this.reqHeader});
+  }
+
+  deleteCategory(id:number){
+    return this.http.delete(this.url+'/'+id+'/');
   }
 }

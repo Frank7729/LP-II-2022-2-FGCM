@@ -11,21 +11,28 @@ import { CategoryService } from '../category.service';
 })
 export class AddCategoryComponent implements OnInit {
 
-  constructor(public categoryService:CategoryService, private router:Router) { }
+  constructor(public categoryService: CategoryService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  submitForm(categoryForm:NgForm){
-    this.categoryService.createCategory(categoryForm.value).subscribe((response)=>{
-      this.router.navigate([""]);
-    });
+  submitForm(categoryForm: NgForm) {
+    if (categoryForm.value.id == null) {
+      this.categoryService.createCategory(categoryForm.value).subscribe((response) => {
+        this.router.navigate([""]);
+      });
+    } else {
+      this.categoryService.updateCategory(categoryForm.value.id, categoryForm.value).subscribe((response) => {
+        this.router.navigate([""]);
+      });
+    }
+    this.resetForm;
   }
 
-  resetForm(categoryForm:NgForm){
-    if(categoryForm!=null){
+  resetForm(categoryForm: NgForm) {
+    if (categoryForm != null) {
       categoryForm.reset();
-      this.categoryService.selectCategory=new Category();
+      this.categoryService.selectCategory = new Category();
     }
   }
 

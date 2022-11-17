@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Category } from '../category';
 import { CategoryService } from '../category.service';
 
 @Component({
@@ -10,7 +12,7 @@ export class ListCategoryComponent implements OnInit {
 
   listCategories:any=[];
 
-  constructor(public cs:CategoryService) { }
+  constructor(public cs:CategoryService, private router:Router) { }
 
   ngOnInit(): void {
     this.loadCategories();
@@ -20,5 +22,15 @@ export class ListCategoryComponent implements OnInit {
       this.listCategories=data;
 
     })
+  }
+  onEdit(category:Category){
+    console.log(category);
+    this.cs.selectCategory=Object.assign({}, category);
+    this.router.navigate(["/add-category"]);
+  }
+  onDelete(id:number){
+    this.cs.deleteCategory(id).subscribe((response)=>{
+      this.loadCategories();
+    });
   }
 }
