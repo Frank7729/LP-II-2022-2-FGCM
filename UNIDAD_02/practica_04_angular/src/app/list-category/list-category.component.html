@@ -1,0 +1,68 @@
+<div class="py-5">
+  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
+      <div class="flex items-center justify-between">
+        <!--Input de busqueda   -->
+        <div class="flex items-center p-2 rounded-md flex-1">
+          <label class="w-full relative text-gray-400 focus-within:text-gray-600 block">
+            <i
+              class="fa-2x fa-sharp fa-solid fa-magnifying-glass pointer-events-none w-8 h-8 absolute top-1/2 py-0 transform -translate-y-1/2 left-3"></i>
+            <input type="text" wire:model="search" style="border: solid 1px slategray;"
+              class="focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm h-11 w-full block pl-14"
+              placeholder="Buscar equipo..." />
+          </label>
+        </div>
+        <!--Boton nuevo   -->
+        <div class="lg:ml-40 ml-10 space-x-8">
+          <a routerLink="add-category"
+            class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer hover:bg-indigo-500">
+            <i class="fa-solid fa-plus"></i> Nuevo
+          </a>
+
+        </div>
+      </div>
+      <!--Tabla lista de items   -->
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="w-full divide-y divide-gray-200 table-auto">
+          <thead class="bg-indigo-500 text-white">
+            <tr class="text-left text-xs font-bold  uppercase">
+              <td scope="col" class="px-6 py-3">ID</td>
+              <td scope="col" class="px-6 py-3">Categoría</td>
+              <td scope="col" class="px-6 py-3">Slug</td>
+              <td scope="col" class="px-6 py-3">Descripción</td>
+              <td scope="col" class="px-6 py-3">Creado</td>
+              <td scope="col" class="px-6 py-3">Actualizado</td>
+              <td scope="col" class="px-6 py-3">Opciones</td>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr *ngFor="let item of listCategories" class="text-sm font-medium text-gray-900">
+              <td class="px-6 py-4">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-indigo-500 text-white">
+                  {{item.id }}
+                </span>
+              </td>
+              <td class="px-6 py-4">{{ item.name }}</td>
+              <td class="px-6 py-4">{{ item.slug }}</td>
+              <td class="px-6 py-4">{{ item.description }}</td>
+              <td class="px-6 py-4">{{ item.created_at }}</td>
+              <td class="px-6 py-4">{{ item.updated_at }}</td>
+              <td class="px-6 py-4">
+                <button (click)="onEdit(item)" class="p-1">
+                  <i
+                    class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition fas fa-edit"></i>
+                </button>
+                <button (click)="onDelete(item.id)"  class="p-1">
+                  <!-- Usamos metodos magicos -->
+                  <i
+                    class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-400 active:bg-red-700 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--Scripts - Sweetalert   -->
+</div>
