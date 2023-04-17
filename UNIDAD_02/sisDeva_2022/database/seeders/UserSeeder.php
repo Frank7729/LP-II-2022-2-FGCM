@@ -19,7 +19,14 @@ class UserSeeder extends Seeder
             'name'=>'Frank Grimaldy Chunca Mamani',
             'email'=>'frankchunca@gmail.com',
             'password'=>bcrypt('12345678'),
+            'people_id'=>'1'
         ]);
-        User::factory(5)->create();
+        User::create([
+            'name'=>'Manuel Chunca Mamani',
+            'email'=>'manuelchuncamamani@gmail.com',
+            'password'=>bcrypt('12345678'),
+            'people_id'=>'1'
+        ]);
+        User::factory(3)->create();
     }
 }
